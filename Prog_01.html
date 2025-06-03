@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Descalvado Gaming</title>
+  <link rel="icon" href="img/dlg.png" type="image/png" />
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #2a0000;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .menu {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      background-color: #3b1d00;
+      padding: 15px 0;
+      font-family: 'Georgia', serif;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .menu a {
+      color: #ffe0b2;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 5px 10px;
+      transition: background 0.3s, color 0.3s;
+      border-radius: 8px;
+    }
+
+    .menu a:hover {
+      background-color: #ffd180;
+      color: #3b1d00;
+    }
+
+    .jogadores {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .jogador {
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .jogador:hover {
+      transform: scale(1.05);
+    }
+
+    .info-jogador {
+      display: none;
+      margin-top: 15px;
+      background-color: #1a1a1a;
+      padding: 15px;
+      border-radius: 10px;
+      color: white;
+      font-size: 14px;
+    }
+
+    .foto-jogador {
+      border-radius: 50%;
+      border: 3px solid #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="menu">
+    <a href="#inicio">Início</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#placar">Último Jogo</a>
+    <a href="#elenco">Elenco</a>
+  </div>
+
+  <div id="inicio">
+    <h1 style="color:Tomato; text-align: center;">Bem-vindo ao Descalvado Gaming</h1>
+    <p style="color:blue; font-size: 18px; text-align: center;">
+      Equipe oficial de eSports focada em League of Legends.
+    </p>
+    <center>
+      <img src="img/dlg.png" width="500" height="450" alt="Logo do Time">
+    </center>
+  </div>
+
+  <div id="sobre" class="container">
+    <h2>Descalvado Gaming</h2>
+    <div class="sobre-time">
+      <p><strong>Descalvado Gaming</strong> é uma equipe competitiva de eSports com sede em Descalvado, dedicada ao cenário de League of Legends. Fundado por apaixonados por games e estratégia, o time busca representar sua cidade natal nos maiores torneios do país, unindo talento, disciplina e espírito de equipe.</p>
+      <p>Com um estilo de jogo agressivo e tático, Descalvado Gaming se destaca não apenas pela habilidade dos seus jogadores, mas também pela sua identidade visual forte e enraizada na cultura local. Nosso símbolo, a árvore seca, representa resistência, força e tradição.</p>
+      <p>Junte-se à torcida e acompanhe nossos jogos rumo à vitória!</p>
+    </div>
+  </div>
+
+  <div id="placar" style="max-width: 600px; margin: 40px auto; padding: 20px; background: linear-gradient(135deg, #1a1a1a, #333); border-radius: 20px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); color: white; font-family: 'Arial Black', sans-serif; text-align: center;">
+    <h2 style="font-size: 28px; margin-bottom: 20px; color: #ff4c4c;">DERROTA NA ÚLTIMA PARTIDA</h2>
+    <div onclick="mostrarMVP()" style="cursor: pointer; display: flex; justify-content: center; align-items: center; font-size: 48px; gap: 20px; border: 2px solid #444; padding: 20px; border-radius: 20px; transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+      <div style="text-align: center;">
+        <img src="img/dlg.png" width="90" height="90" alt="DLG">
+        <div><strong>DLG</strong></div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="color: #ff4c4c;">0</span>
+        <span style="font-size: 32px;">x</span>
+        <span style="color: #4cffff;">2</span>
+      </div>
+      <div style="text-align: center;">
+        <img src="img/58.png" width="90" height="90" alt="BDF">
+        <div><strong>BDF</strong></div>
+      </div>
+    </div>
+    <p style="margin-top: 20px; font-size: 18px; color: #ccc;">Jogo realizado em 01/06/2025</p>
+    <div style="margin-top: 30px;">
+      <img src="img/e.png" alt="Estatísticas do Jogo" style="max-width: 100%; border-radius: 15px; box-shadow: 0 0 20px rgba(255,255,255,0.2);">
+    </div>
+    <div id="mvpNegativo" style="display: none; margin-top: 30px; background-color: #2a0000; padding: 20px; border-radius: 15px; box-shadow: 0 0 20px rgba(255, 0, 0, 0.5); text-align: center;">
+      <h3 style="color: #ff4c4c;">👎 MVP Negativo</h3>
+      <img src="img/voli.png" width="100" height="100" style="border-radius: 50%; border: 3px solid #ff4c4c;" alt="Jogador Ruim">
+      <p style="margin-top: 10px; font-size: 20px;"><strong>João Vitor</strong></p>
+      <p style="margin-top: 10px; font-size: 20px;"><strong>yasuocadeirante</strong></p>
+      <p style="font-size: 14px; color: #ccc;">Nota: 3.5 | Errou em momentos decisivos</p>
+    </div>
+  </div>
+
+  <script>
+    function mostrarMVP() {
+      const mvp = document.getElementById("mvpNegativo");
+      mvp.style.display = mvp.style.display === "none" ? "block" : "none";
+    }
+  </script>
+<style>
+  .jogadores {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .jogador {
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .jogador:hover {
+    transform: scale(1.05);
+  }
+
+  .info-jogador {
+    display: none;
+    margin-top: 15px;
+    background-color: #1a1a1a;
+    padding: 15px;
+    border-radius: 10px;
+    color: white;
+    font-size: 14px;
+  }
+
+  .foto-jogador {
+    border-radius: 50%;
+    border: 3px solid #555;
+  }
+</style>
+
+<div class="jogadores">
+  <!-- Jogador 1 -->
+  <div class="jogador" onclick="mostrarInfo(1)">
+    <img src="img/lucas.png"width="100" height="100" class="foto-jogador" alt="Jogador 1">
+    <div id="info1" class="info-jogador">
+      <img src="img/annie.png" width="80" height="80" style="border-radius: 10px;"><br>
+      <strong>DLG FATHER RX</strong><br>
+      Win Rate: 55%<br>
+      Participação: 68%<br>
+      Ouro/min: 385
+    </div>
+  </div>
+
+  <!-- Jogador 2 -->
+  <div class="jogador" onclick="mostrarInfo(2)">
+    <img src="img/caio.png"width="100" height="100" class="foto-jogador" alt="Jogador 2">
+    <div id="info2" class="info-jogador">
+      <img src="img/kindred.png"width="80" height="80" style="border-radius: 10px;"><br>
+      <strong>DEXTER7</strong><br>
+      Win Rate: 49%<br>
+      Participação: 72%<br>
+      Ouro/min: 412
+    </div>
+  </div>
+
+  <!-- Jogador 3 -->
+  <div class="jogador" onclick="mostrarInfo(3)">
+    <img src="img/alan.png" width="100" height="100" class="foto-jogador" alt="Jogador 3">
+    <div id="info3" class="info-jogador">
+      <img src="img/nautilus.png" width="80" height="80" style="border-radius: 10px;"><br>
+      <strong>SmurfDoBronze</strong><br>
+      Win Rate: 42%<br>
+      Participação: 51%<br>
+      Ouro/min: 295
+    </div>
+  </div>
+
+  <!-- Jogador 4 -->
+  <div class="jogador" onclick="mostrarInfo(4)">
+    <img src="img/joao.png"width="100" height="100" class="foto-jogador" alt="Jogador 4">
+    <div id="info4" class="info-jogador">
+      <img src="img/voli.png" width="80" height="80" style="border-radius: 10px;"><br>
+      <strong>yasuocadeirantee</strong><br>
+      Win Rate: 48%<br>
+      Participação: 66%<br>
+      Ouro/min: 401
+    </div>
+  </div>
+
+  <!-- Jogador 5 -->
+  <div class="jogador" onclick="mostrarInfo(5)">
+    <img src="img/gabriel.png"width="100" height="100" class="foto-jogador" alt="Jogador 5">
+    <div id="info5" class="info-jogador">
+      <img src="img/vayne.png" width="80" height="80" style="border-radius: 10px;"><br>
+      <strong>SEGURA MEU FAL</strong><br>
+      Win Rate: 57%<br>
+      Participação: 70%<br>
+      Ouro/min: 419
+    </div>
+  </div>
+</div>
+
+<script>
+  function mostrarInfo(id) {
+    for (let i = 1; i <= 5; i++) {
+      document.getElementById("info" + i).style.display = (i === id) ? "block" : "none";
+    }
+  }
+</script>
+<div id="contador" style="margin: 40px auto; padding: 20px; max-width: 400px; text-align: center; background: linear-gradient(#1c1c1c, #000); border: 3px solid gold; border-radius: 20px; box-shadow: 0 0 30px rgba(255, 215, 0, 0.4); font-family: 'Georgia', serif; color: gold; font-size: 22px;">
+  <h2 style="margin-bottom: 15px; color: #ffd700;">⏳ Próxima Partida</h2>
+  <div id="tempoRestante" style="font-size: 28px; font-weight: bold;">Carregando...</div>
+  <p style="font-size: 16px; color: #ccc;">03 de Junho de 2025 às 22:00</p>
+</div>
+
+<div id="contadorContainer" onclick="toggleApoio()" style="cursor: pointer; margin: 40px auto; padding: 20px; max-width: 420px; text-align: center; background: linear-gradient(#1c1c1c, #000); border: 3px solid gold; border-radius: 20px; box-shadow: 0 0 30px rgba(255, 215, 0, 0.4); font-family: 'Georgia', serif; color: gold;">
+  <h2 style="margin-bottom: 15px; color: #ffd700;">⏳ Próxima Partida</h2>
+  <div id="tempoRestante" style="font-size: 28px; font-weight: bold;">Carregando...</div>
+  <p style="font-size: 16px; color: #ccc;">03 de Junho de 2025 às 22:00</p>
+</div>
+
+<!-- SEÇÃO DE APOIO -->
+<div id="apoio" style="display: none; margin: -20px auto 40px auto; max-width: 420px; background: #111; padding: 20px; border-radius: 15px; border: 2px solid #333; text-align: center; box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);">
+  <p style="color: #ccc; font-size: 16px;">Você deseja apoiar a equipe?</p>
+  <button onclick="curtir()" style="margin: 10px; padding: 10px 20px; font-size: 16px; background-color: #222; border: 2px solid #ffcc00; color: gold; border-radius: 10px; cursor: pointer;">👍 Curtir</button>
+  <button onclick="apoiar()" style="margin: 10px; padding: 10px 20px; font-size: 16px; background-color: #222; border: 2px solid #00d9ff; color: #00d9ff; border-radius: 10px; cursor: pointer;">❤️ Apoiar</button>
+  <div id="mensagemApoio" style="margin-top: 10px; color: lightgreen;"></div>
+</div>
+
+<script>
+  function atualizarContador() {
+    const destino = new Date("2025-06-03T22:00:00").getTime();
+    const agora = new Date().getTime();
+    const diferenca = destino - agora;
+
+    if (diferenca <= 0) {
+      document.getElementById("tempoRestante").innerHTML = "🟢 A partida começou!";
+      return;
+    }
+
+    const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+    document.getElementById("tempoRestante").innerHTML =
+      `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+  }
+
+  function toggleApoio() {
+    const apoioDiv = document.getElementById("apoio");
+    apoioDiv.style.display = apoioDiv.style.display === "none" ? "block" : "none";
+  }
+
+  function curtir() {
+    document.getElementById("mensagemApoio").innerHTML = "✅ Obrigado por curtir!";
+  }
+
+  function apoiar() {
+    document.getElementById("mensagemApoio").innerHTML = "💖 Seu apoio foi registrado!";
+  }
+
+  setInterval(atualizarContador, 1000);
+  atualizarContador();
+</script>
+</body>
+</html>
